@@ -157,13 +157,13 @@ def restore_config_state_file():
     shared.opts.save(shared.config_filename)
 
     if os.path.isfile(config_state_file):
-        print(f"*** About to restore extension state from file: {config_state_file}")
+        print(f"*** About to restore extension state from file: {config_state_file}", flush=True)
         with open(config_state_file, "r", encoding="utf-8") as f:
             config_state = json.load(f)
             config_states.restore_extension_config(config_state)
         startup_timer.record("restore extension config")
     elif config_state_file:
-        print(f"!!! Config state backup not found: {config_state_file}")
+        print(f"!!! Config state backup not found: {config_state_file}", flush=True)
 
 
 def validate_tls_options():
@@ -352,7 +352,7 @@ def api_only():
 
     modules.script_callbacks.app_started_callback(None, app)
 
-    print(f"Startup time: {startup_timer.summary()}.")
+    print(f"Startup time: {startup_timer.summary()}.", flush=True)
     api.launch(server_name="0.0.0.0" if cmd_opts.listen else "127.0.0.1", port=cmd_opts.port if cmd_opts.port else 7861)
 
 
@@ -432,7 +432,7 @@ def webui():
         modules.script_callbacks.app_started_callback(shared.demo, app)
         startup_timer.record("scripts app_started_callback")
 
-        print(f"Startup time: {startup_timer.summary()}.")
+        print(f"Startup time: {startup_timer.summary()}.", flush=True)
 
         if cmd_opts.subpath:
             redirector = FastAPI()

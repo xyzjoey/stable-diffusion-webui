@@ -1,3 +1,4 @@
+import logging
 from modules import launch_utils
 
 
@@ -35,4 +36,5 @@ def main():
 
 
 if __name__ == "__main__":
+    logging.getLogger().setLevel(logging.INFO)
     main()

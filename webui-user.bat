@@ -2,7 +2,9 @@
 
 set PYTHON=
 set GIT=
-set VENV_DIR=
+set VENV_DIR=.venv
 set COMMANDLINE_ARGS=
 
-call webui.bat
+cmd /c webui.bat
+
+pause
